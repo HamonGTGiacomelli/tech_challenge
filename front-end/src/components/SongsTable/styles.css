@@ -1,0 +1,18 @@
+.songsTable {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  overflow: auto;
+  gap: 1px;
+  border: 1px solid black;
+  background-color: black;
+}
+
+.songsTable .columnTitle {
+  font-weight: bold;
+  background-color: aqua;
+}
+
+.songsTable > div {
+  padding: 5px;
+  background-color: white;
+}
