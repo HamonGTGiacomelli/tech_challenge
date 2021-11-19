@@ -1,4 +1,6 @@
-export type SongsResponse = {
+export type SongsResponse = Song[];
+
+export type Song = {
   song: string;
   artist: string;
   songReleaseDate: string;
@@ -20,8 +22,4 @@ export type SongsResponse = {
   metricO: number;
   metricP: number;
   metricCi?: number;
-}[];
-
-export const fetchSongs = (): SongsResponse => {
-  return require("./songData.json");
 };

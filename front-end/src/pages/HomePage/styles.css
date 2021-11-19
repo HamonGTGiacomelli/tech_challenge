@@ -5,3 +5,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.homePage .link {
+  color: #c6002b;
+}
+
+.wave {
+  position: fixed;
+  bottom: 0;
+}
