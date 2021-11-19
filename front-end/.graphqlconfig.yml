@@ -1,0 +1,18 @@
+projects:
+  Desafio iHeart:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: src/graphql
+        region: us-east-2
+        apiId: sm476oin2fcn3oqnsw7ifqtjp4
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

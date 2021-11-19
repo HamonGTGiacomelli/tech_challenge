@@ -25,8 +25,29 @@ const Table: React.FC<Props> = ({ songs }) => {
         : SORT_DIRECTION.DESCENDING
     );
   };
-
-  const columnsName = Object.keys(songs[0]);
+  const columnsName = [
+    "song",
+    "artist",
+    "songReleaseDate",
+    "playCount",
+    "metricA",
+    "metricB",
+    "metricC",
+    "metricD",
+    "metricE",
+    "metricF",
+    "metricG",
+    "metricH",
+    "metricI",
+    "metricJ",
+    "metricK",
+    "metricL",
+    "metricM",
+    "metricN",
+    "metricO",
+    "metricP",
+    "metricCi",
+  ];
   return (
     <div className="songsTable">
       {columnsName.map((column) => {
@@ -44,9 +65,9 @@ const Table: React.FC<Props> = ({ songs }) => {
           </div>
         );
       })}
-      {_.sortBy(songs, [sortColumn]).map((song) => {
-        return Object.values(song).map((value) => {
-          return <div>{value}</div>;
+      {_.sortBy(songs, [sortColumn]).map((song: any) => {
+        return columnsName.map((column) => {
+          return <div>{song[column]}</div>;
         });
       })}
     </div>

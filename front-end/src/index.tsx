@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Songs from "./pages/Songs";
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports'; 
+Amplify.configure(awsconfig);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,6 +1,6 @@
 .songsTable {
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
+  grid-template-columns: repeat(21, 1fr);
   overflow: auto;
   gap: 1px;
   border: 1px solid black;
