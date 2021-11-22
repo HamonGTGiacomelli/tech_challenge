@@ -1,4 +1,28 @@
- # iHeartMedia - Music Lab - Code Challenge
+
+# How to run
+## Run Backend
+Install serverless:
+```
+npm install -g serverless
+```
+Install serverless-s3-local plugin:
+```
+serverless plugin install --name serverless-s3-local
+```
+Then start backend:
+```
+cd graphql-apollo
+npm install
+npm run start:offline
+```
+## Run Frontend
+```
+cd front-end
+npm install
+npm run start
+```
+
+# iHeartMedia - Music Lab - Code Challenge
 
 Create a React application that shows a list of songs with their information and metrics displayed. The app should have at least **2 pages (views)**:
 A landing page, and a page to show data coming from an API.
