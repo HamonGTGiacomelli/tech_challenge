@@ -15,6 +15,15 @@ cd graphql-apollo
 npm install
 npm run start:offline
 ```
+
+Access graphql plaground and run the mutation to add the file songData.json to S3 offline.
+
+```
+mutation Mutation {
+  storeSongs
+}
+```
+
 ## Run Frontend
 ```
 cd front-end
