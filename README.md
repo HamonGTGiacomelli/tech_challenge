@@ -16,7 +16,7 @@ npm install
 npm run start:offline
 ```
 
-Access graphql plaground and run the mutation to add the file songData.json to S3 offline.
+Access graphql playground and run the mutation to add the file songData.json to S3 offline.
 
 ```
 mutation Mutation {
