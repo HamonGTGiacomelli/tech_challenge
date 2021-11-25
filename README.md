@@ -7,11 +7,11 @@ npm install -g serverless
 ```
 Install serverless-s3-local plugin:
 ```
+cd graphql-apollo
 serverless plugin install --name serverless-s3-local
 ```
 Then start backend:
 ```
-cd graphql-apollo
 npm install
 npm run start:offline
 ```
@@ -25,6 +25,7 @@ mutation Mutation {
 ```
 
 ## Run Frontend
+Open a new terminal and run:
 ```
 cd front-end
 npm install
