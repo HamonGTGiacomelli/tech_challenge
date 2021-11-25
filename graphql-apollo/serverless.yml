@@ -10,6 +10,8 @@ custom:
   s3:
     host: localhost
     directory: /tmp
+  serverless-offline:
+    httpPort: ${env:PORT}
 provider:
   name: aws
   runtime: nodejs12.x
