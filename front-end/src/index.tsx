@@ -5,11 +5,10 @@ import HomePage from "./pages/HomePage";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Songs from "./pages/Songs";
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
-import dotenv from "dotenv";
-dotenv.config();
-Amplify.configure(awsconfig);
+import Amplify from "aws-amplify";
+import { amplifyConfig } from "./configs/amplifyConfig";
+
+Amplify.configure(amplifyConfig);
 
 ReactDOM.render(
   <React.StrictMode>
