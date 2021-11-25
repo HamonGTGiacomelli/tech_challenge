@@ -24,8 +24,9 @@ export const storeSongsJSONFile = async () => {
       .putObject(
         {
           ...songsLocation,
-          Body: new Buffer(
-            JSON.stringify(require("../../resource/songData.json"))
+          Body: Buffer.from(
+            JSON.stringify(require("../../resource/songData.json")),
+            "utf8F"
           ),
         },
         () => {}
