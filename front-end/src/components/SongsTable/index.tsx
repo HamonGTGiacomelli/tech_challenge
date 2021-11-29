@@ -19,7 +19,7 @@ const buildSortedList = (
   const sortValue = [
     columnToSort === "songReleaseDate"
       ? (value: Song) =>
-          moment(value.songReleaseDate, "DD/MM/YYYYYY").toISOString()
+          moment(value.songReleaseDate, "MM/DD/YYYYYY").toISOString()
       : columnToSort,
   ];
   return sortDirection ? _.orderBy(songs, sortValue, [sortDirection]) : songs;
