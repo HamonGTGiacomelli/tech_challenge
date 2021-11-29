@@ -27,3 +27,8 @@
   background-color: white;
   white-space: nowrap;
 }
+
+.songsTable .sortIcon,.iconPlaceholder {
+  width: 20px;
+  height: 20px;
+}

@@ -11,7 +11,7 @@ export const fetchSongsJSONFile = async () => {
     .promise()
     .then((res) => {
       console.log({ body: res.Body });
-      return res.Body ? JSON.parse(res.Body.toString("utf-8")) : "";
+      return res.Body ? JSON.parse(res.Body.toString("utf-8")) : ""; // TODO: throw error
     })
     .catch((err) => {
       return err;

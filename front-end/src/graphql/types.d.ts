@@ -7,7 +7,7 @@ export type Song = {
   playCount: number;
   metricA: number;
   metricB: number;
-  metricC: number;
+  metricC?: number;
   metricD: number;
   metricE: number;
   metricF: number;

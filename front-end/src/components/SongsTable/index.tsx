@@ -3,53 +3,18 @@ import * as _ from "lodash";
 import { Song, SongsResponse } from "../../graphql/types";
 import moment from "moment";
 import "./styles.css";
+import { songsColumnsName, SORT_QUEUE } from "./consts";
+import { TableHeader } from "./TableHeader";
+import { SortDirection } from "./types";
 
 type Props = {
   songs: SongsResponse;
 };
 
-type SortDirection = "asc" | "desc";
-
-const SORT_DIRECTION = {
-  ASCENDING: "asc" as SortDirection,
-  DESCENDING: "desc" as SortDirection,
-  NONE: undefined,
-};
-
-const SORT_QUEUE: (SortDirection | undefined)[] = [
-  SORT_DIRECTION.ASCENDING,
-  SORT_DIRECTION.DESCENDING,
-  SORT_DIRECTION.NONE,
-];
-
-const columnsName = [
-  "song",
-  "artist",
-  "songReleaseDate",
-  "playCount",
-  "metricA",
-  "metricB",
-  "metricC",
-  "metricD",
-  "metricE",
-  "metricF",
-  "metricG",
-  "metricH",
-  "metricI",
-  "metricJ",
-  "metricK",
-  "metricL",
-  "metricM",
-  "metricN",
-  "metricO",
-  "metricP",
-  "metricCi",
-];
-
 const buildSortedList = (
   songs: SongsResponse,
-  sortDirection: SortDirection | undefined,
-  columnToSort: string
+  columnToSort: string,
+  sortDirection?: SortDirection
 ) => {
   const sortValue = [
     columnToSort === "songReleaseDate"
@@ -81,30 +46,17 @@ const Table: React.FC<Props> = ({ songs }) => {
     }
   };
 
-  const songsList = buildSortedList(songs, sortDirection, sortColumn);
+  const songsList = buildSortedList(songs, sortColumn, sortDirection);
 
   return (
     <div className="songsTable">
-      {columnsName.map((column) => {
-        return (
-          <div
-            key={column}
-            className="columnTitle"
-            onClick={() => handleOnColumnClicked(column)}
-          >
-            <span>{column}</span>
-            {sortColumn === column ? (
-              sortDirection === SORT_DIRECTION.ASCENDING ? (
-                <span>/\</span>
-              ) : sortDirection === SORT_DIRECTION.DESCENDING ? (
-                <span>\/</span>
-              ) : null
-            ) : null}
-          </div>
-        );
-      })}
+      <TableHeader
+        handleOnColumnClicked={handleOnColumnClicked}
+        sortColumn={sortColumn}
+        sortDirection={sortDirection}
+      />
       {_.map(songsList, (song: any) => {
-        return columnsName.map((column) => {
+        return songsColumnsName.map((column) => {
           return <div>{song[column]}</div>;
         });
       })}
