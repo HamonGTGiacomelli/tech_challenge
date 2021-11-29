@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import { Song, SongsResponse } from "../../graphql/types";
 import moment from "moment";
 import "./styles.css";
-import { songsColumnsName, SORT_QUEUE } from "./consts";
+import { SONGS_COLUMNS_NAME, SORT_DIRECTION_QUEUE } from "./consts";
 import { TableHeader } from "./TableHeader";
 import { SortDirection } from "./types";
 
@@ -27,25 +27,21 @@ const buildSortedList = (
 
 const Table: React.FC<Props> = ({ songs }) => {
   const [sortColumn, setSortColumn] = useState<string>("");
-  const [sortDirection, setSortDirection] = useState<
-    SortDirection | undefined
-  >();
-  const [sortQueueIndex, setSortQueueIndex] = useState(0);
+  const [sortDirectionQueueIndex, setSortDirectionQueueIndex] = useState(0);
 
   const handleOnColumnClicked = (column: string) => {
     const previousSortColumn = sortColumn;
     setSortColumn(column);
     if (previousSortColumn !== column) {
-      setSortQueueIndex(0);
-      setSortDirection(SORT_QUEUE[0]);
+      setSortDirectionQueueIndex(0);
     } else {
       const nextIndex =
-        sortQueueIndex + 1 >= SORT_QUEUE.length ? 0 : sortQueueIndex + 1;
-      setSortQueueIndex(nextIndex);
-      setSortDirection(SORT_QUEUE[nextIndex]);
+        sortDirectionQueueIndex + 1 >= SORT_DIRECTION_QUEUE.length ? 0 : sortDirectionQueueIndex + 1;
+      setSortDirectionQueueIndex(nextIndex);
     }
   };
 
+  const sortDirection = SORT_DIRECTION_QUEUE[sortDirectionQueueIndex];
   const songsList = buildSortedList(songs, sortColumn, sortDirection);
 
   return (
@@ -56,8 +52,8 @@ const Table: React.FC<Props> = ({ songs }) => {
         sortDirection={sortDirection}
       />
       {_.map(songsList, (song: any) => {
-        return songsColumnsName.map((column) => {
-          return <div>{song[column]}</div>;
+        return SONGS_COLUMNS_NAME.map((column) => {
+          return <div>{song[column.value]}</div>;
         });
       })}
     </div>

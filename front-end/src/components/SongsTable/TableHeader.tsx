@@ -1,5 +1,5 @@
 import React from "react";
-import { songsColumnsName, SORT_DIRECTION } from "./consts";
+import { SONGS_COLUMNS_NAME, SORT_DIRECTION } from "./consts";
 import { ReactComponent as ArrowDown } from "../../assets/ArrowDown.svg";
 import { ReactComponent as ArrowUp } from "../../assets/ArrowUp.svg";
 import { SortDirection } from "./types";
@@ -36,15 +36,16 @@ export const TableHeader: React.FC<Props> = ({
 }) => {
   return (
     <>
-      {songsColumnsName.map((column) => {
+      {SONGS_COLUMNS_NAME.map((column) => {
+        const {value: columnValue, label: columnLabel} = column;
         return (
           <div
-            key={column}
+            key={columnValue}
             className="columnTitle"
-            onClick={() => handleOnColumnClicked(column)}
+            onClick={() => handleOnColumnClicked(columnValue)}
           >
-            <span>{column}</span>
-            {renderSort(sortDirection, sortColumn === column)}
+            <span>{columnLabel}</span>
+            {renderSort(sortDirection, sortColumn === columnValue)}
           </div>
         );
       })}
