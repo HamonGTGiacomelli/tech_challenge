@@ -14,7 +14,7 @@ export const TableBody: React.FC<Props> = ({ songs }) => {
         {_.map(songs, (song: Song) => {
           return SONGS_COLUMNS_NAME.map((column) => {
             return (
-              <div key={`${song.song}_${song.artist}_${column.value}`} data-testid={`${song.song}_${song.artist}_${column.value}`}>
+              <div key={`${song.song}_${song.artist}_${column.value}`} data-testid={`data_${column.value}`}>
                 {song[column.value]}
               </div>
             );
