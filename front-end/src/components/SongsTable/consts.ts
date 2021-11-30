@@ -1,6 +1,7 @@
+import { Song } from "../../graphql/types";
 import { SortDirection } from "./types";
 
-export const SONGS_COLUMNS_NAME = [
+export const SONGS_COLUMNS_NAME: {value: keyof Song, label: string}[] = [
     {value: "song", label: "Song"},
     {value: "artist", label: "Artist"},
     {value: "songReleaseDate", label: "Release Date"},

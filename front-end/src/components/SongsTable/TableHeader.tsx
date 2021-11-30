@@ -43,6 +43,7 @@ export const TableHeader: React.FC<Props> = ({
             key={columnValue}
             className="columnTitle"
             onClick={() => handleOnColumnClicked(columnValue)}
+            data-testid={`columnHeader_${columnValue}`}
           >
             <span>{columnLabel}</span>
             {renderSort(sortDirection, sortColumn === columnValue)}

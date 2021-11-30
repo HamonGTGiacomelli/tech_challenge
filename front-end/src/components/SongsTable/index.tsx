@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import * as _ from "lodash";
 import { Song, SongsResponse } from "../../graphql/types";
 import moment from "moment";
-import "./styles.css";
-import { SONGS_COLUMNS_NAME, SORT_DIRECTION_QUEUE } from "./consts";
+import {  SORT_DIRECTION_QUEUE } from "./consts";
 import { TableHeader } from "./TableHeader";
 import { SortDirection } from "./types";
+import { TableBody } from "./TableBody";
+import "./styles.css";
 
 type Props = {
   songs: SongsResponse;
@@ -36,13 +37,15 @@ const Table: React.FC<Props> = ({ songs }) => {
       setSortDirectionQueueIndex(0);
     } else {
       const nextIndex =
-        sortDirectionQueueIndex + 1 >= SORT_DIRECTION_QUEUE.length ? 0 : sortDirectionQueueIndex + 1;
+        sortDirectionQueueIndex + 1 >= SORT_DIRECTION_QUEUE.length
+          ? 0
+          : sortDirectionQueueIndex + 1;
       setSortDirectionQueueIndex(nextIndex);
     }
   };
 
   const sortDirection = SORT_DIRECTION_QUEUE[sortDirectionQueueIndex];
-  const songsList = buildSortedList(songs, sortColumn, sortDirection);
+  const sortedSongs = buildSortedList(songs, sortColumn, sortDirection);
 
   return (
     <div className="songsTable">
@@ -51,11 +54,7 @@ const Table: React.FC<Props> = ({ songs }) => {
         sortColumn={sortColumn}
         sortDirection={sortDirection}
       />
-      {_.map(songsList, (song: any) => {
-        return SONGS_COLUMNS_NAME.map((column) => {
-          return <div>{song[column.value]}</div>;
-        });
-      })}
+      <TableBody songs={sortedSongs} />
     </div>
   );
 };
