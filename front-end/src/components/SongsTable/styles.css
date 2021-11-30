@@ -32,3 +32,7 @@
   width: 20px;
   height: 20px;
 }
+
+.songsTable .emptyBody {
+  grid-column:  1 / span main-end;
+}

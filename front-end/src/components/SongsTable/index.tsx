@@ -26,7 +26,7 @@ const buildSortedList = (
   return sortDirection ? _.orderBy(songs, sortValue, [sortDirection]) : songs;
 };
 
-const Table: React.FC<Props> = ({ songs }) => {
+export const SongsTable: React.FC<Props> = ({ songs }) => {
   const [sortColumn, setSortColumn] = useState<string>("");
   const [sortDirectionQueueIndex, setSortDirectionQueueIndex] = useState(0);
 
@@ -48,7 +48,7 @@ const Table: React.FC<Props> = ({ songs }) => {
   const sortedSongs = buildSortedList(songs, sortColumn, sortDirection);
 
   return (
-    <div className="songsTable">
+    <div data-testid={"songsTable"} className="songsTable">
       <TableHeader
         handleOnColumnClicked={handleOnColumnClicked}
         sortColumn={sortColumn}
@@ -58,5 +58,3 @@ const Table: React.FC<Props> = ({ songs }) => {
     </div>
   );
 };
-
-export default Table;

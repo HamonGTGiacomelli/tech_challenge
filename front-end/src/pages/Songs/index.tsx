@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SongsTable from "../../components/SongsTable";
+import {SongsTable} from "../../components/SongsTable";
 import { API, graphqlOperation } from "aws-amplify";
 import { getSongs } from "../../graphql/queries";
 import { SongsResponse } from "../../graphql/types";
